@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ania and Bartosz's Maldives Countdown</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/countdownjs/2.3.0/countdown.min.js"></script>
+    <title>Maldives Countdown</title>
     <style>
-        body {
-            background-image: url('https://source.unsplash.com/1600x900/?maldives,beach,palm');
-            background-size: cover;
-            font-family: monospace;
-            color: #fff;
-            text-align: center;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        #countdown {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4em;
-            letter-spacing: 10px;
-        }
+       #countdown {
+    font-size: 4em;
+    color: white;
+}
     </style>
 </head>
 <body>
     <div id="countdown"></div>
     <script>
-        const countdown = new Countdown({
-            date: 'March 1, 2025 21:35:00',
-            offset: -1, // Adjust for CET timezone
-            render: function(dom) {
-                dom.el.style.color = '#fff';
-            }
-        });
+        const countdownElement = document.getElementById('countdown');
+
+const targetDate = new Date('2025-03-01T21:35:00Z').getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    if (distance < 0) {
+        clearInterval(countdownInterval);
+        countdownElement.innerHTML = 'Happy Vacation!';
+    }
+}
+
+const countdownInterval = setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
