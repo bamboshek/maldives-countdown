@@ -1,39 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Maldives Countdown</title>
-    <style>
-       #countdown {
-    font-size: 4em;
-    color: white;
-}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maldives Vacation Countdown</title>
+  <style>
+    body {
+      background-image: url(https://img.playbook.com/TVk7x2MVEUeQQ2XskKmmvNJSYwjlR_leTrLzkC9L85g/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzcxM2Y1NDI3/LTNhMzItNGZlNC1h/OTMzLWNhNzI5NjY4/MDQ0NQ);
+      background-size: cover;
+      background-position: center;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+      text-align: center;
+    }
+
+    .countdown-container {
+      font-size: 4rem;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .countdown-text {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .timer {
+      font-size: 5rem;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div id="countdown"></div>
-    <script>
-        const countdownElement = document.getElementById('countdown');
+  <div class="countdown-container">
+    <div class="countdown-text">Your vacation starts in:</div>
+    <div class="timer" id="timer"></div>
+  </div>
 
-const targetDate = new Date('2025-03-01T21:35:00Z').getTime();
+  <script>
+    function updateCountdown() {
+      const vacationDate = new Date('March 1, 2025 21:35:00 GMT+0100'); // Adjust for CET time zone
 
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
+      const currentDate = new Date();
+      const difference = vacationDate - currentDate;
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if (difference <= 0) {
+        document.getElementById('timer').innerText = "Your vacation has arrived!";
+        return;
+      }
 
-    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 
-    if (distance < 0) {
-        clearInterval(countdownInterval);
-        countdownElement.innerHTML = 'Happy Vacation!';
+      document.getElementById('timer').innerText = `${days}d ${hours}h ${minutes}m`;
     }
-}
 
-const countdownInterval = setInterval(updateCountdown, 1000);
-    </script>
+    // Update the countdown every minute
+    setInterval(updateCountdown, 60000);
+    updateCountdown(); // Run once initially
+  </script>
 </body>
 </html>
