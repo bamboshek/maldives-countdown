@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ania and Bartosz's Maldives Countdown</title>
+    <style>
+        /* ... rest of your CSS styles ... */
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+    <div id="palmtrees"></div>
+
+    <script>
+        const countdownElement = document.getElementById('countdown');
+        const palmtreesElement = document.getElementById('palmtrees');
+
+        // Target date for March 1st, 21:35 CET
+        const targetDate = new Date('2025-03-01T21:35:00Z').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // ... rest of the countdown logic ...
+        }
+
+        // ... rest of your JavaScript code ...
+    </script>
+</body>
+</html>
