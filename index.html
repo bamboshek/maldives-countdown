@@ -6,7 +6,7 @@
   <title>Maldives Vacation Countdown</title>
   <style>
     body {
-      background-image: url(https://img.playbook.com/TVk7x2MVEUeQQ2XskKmmvNJSYwjlR_leTrLzkC9L85g/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzcxM2Y1NDI3/LTNhMzItNGZlNC1h/OTMzLWNhNzI5NjY4/MDQ0NQ);
+      background-image: url(https://img.playbook.com/TVk7x2MVEUeQQ2XskKmmvNJSYwjlR_leTrLzkC9L85g/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzcxM2Y1NDI3/LTNhMzItNGZlNC1h/OTMzLWNhNzI5NjY4/MDQ0NQ); /* Replace with your image URL */
       background-size: cover;
       background-position: center;
       font-family: 'Arial', sans-serif;
@@ -39,7 +39,7 @@
 </head>
 <body>
   <div class="countdown-container">
-    <div class="countdown-text">Your vacation starts in:</div>
+    <div class="countdown-text">Ania i Bartosz lecą na Malediwy za:</div>
     <div class="timer" id="timer"></div>
   </div>
 
@@ -50,21 +50,4 @@
       const currentDate = new Date();
       const difference = vacationDate - currentDate;
 
-      if (difference <= 0) {
-        document.getElementById('timer').innerText = "Your vacation has arrived!";
-        return;
-      }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-
-      document.getElementById('timer').innerText = `${days}d ${hours}h ${minutes}m`;
-    }
-
-    // Update the countdown every minute
-    setInterval(updateCountdown, 60000);
-    updateCountdown(); // Run once initially
-  </script>
-</body>
-</html>
+    
